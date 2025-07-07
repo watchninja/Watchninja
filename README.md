@@ -1,1 +1,368 @@
-([[This file was protected with MoonSec V3]]):gsub('.+', (function(a) _rOzbtHXCiDtv = a; end)); return(function(h,...)local d;local a;local s;local t;local o;local r;local e=24915;local n=0;local l={};while n<353 do n=n+1;while n<0x22b and e%0x105c<0x82e do n=n+1 e=(e+882)%16909 local f=n+e if(e%0x3af8)<=0x1d7c then e=(e*0x109)%0x9c10 while n<0x1b0 and e%0x308c<0x1846 do n=n+1 e=(e+185)%2197 local t=n+e if(e%0x7d4)>0x3ea then e=(e*0xbb)%0x5b66 local e=61714 if not l[e]then l[e]=0x1 d=(not d)and _ENV or d;end elseif e%2~=0 then e=(e-0x2a7)%0x3711 local e=15866 if not l[e]then l[e]=0x1 end else e=(e+0x21b)%0x58a n=n+1 local e=55201 if not l[e]then l[e]=0x1 end end end elseif e%2~=0 then e=(e+0xd3)%0x3e60 while n<0x31a and e%0x28a6<0x1453 do n=n+1 e=(e-671)%20462 local f=n+e if(e%0x1580)<0xac0 then e=(e-0x12)%0x2020 local e=68324 if not l[e]then l[e]=0x1 r="\4\8\116\111\110\117\109\98\101\114\83\81\116\77\74\102\118\122\0\6\115\116\114\105\110\103\4\99\104\97\114\114\73\97\117\95\99\114\84\0\6\115\116\114\105\110\103\3\115\117\98\116\72\118\73\112\104\83\100\0\6\115\116\114\105\110\103\4\98\121\116\101\101\108\95\82\82\81\71\76\0\5\116\97\98\108\101\6\99\111\110\99\97\116\106\95\108\121\122\115\113\95\0\5\116\97\98\108\101\6\105\110\115\101\114\116\109\70\104\109\116\113\101\122\5";end elseif e%2~=0 then e=(e*0x306)%0x934d local e=13948 if not l[e]then l[e]=0x1 s=tonumber;end else e=(e-0x102)%0x6fa4 n=n+1 local e=35770 if not l[e]then l[e]=0x1 t=function(t)local e=0x01 local function l(n)e=e+n return t:sub(e-n,e-0x01)end while true do local n=l(0x01)if(n=="\5")then break end local e=a.byte(l(0x01))local e=l(e)if n=="\2"then e=o.SQtMJfvz(e)elseif n=="\3"then e=e~="\0"elseif n=="\6"then d[e]=function(e,n)return h(8,nil,h,n,e)end elseif n=="\4"then e=d[e]elseif n=="\0"then e=d[e][l(a.byte(l(0x01)))];end local n=l(0x08)o[n]=e end end end end end else e=(e+0x7a)%0x56e6 n=n+1 while n<0x101 and e%0x2c2e<0x1617 do n=n+1 e=(e+504)%43981 local t=n+e if(e%0x4316)>=0x218b then e=(e+0x1cf)%0x323 local e=32950 if not l[e]then l[e]=0x1 o={};end elseif e%2~=0 then e=(e-0x357)%0x84fc local e=19843 if not l[e]then l[e]=0x1 d=getfenv and getfenv();end else e=(e+0x18c)%0x9950 n=n+1 local e=82096 if not l[e]then l[e]=0x1 a=string;end end end end end e=(e+828)%39588 end t(r);local n={};for e=0x0,0xff do local l=o.rIau_crT(e);n[e]=l;n[l]=e;end local function c(e)return n[e];end local r=(function(r,t)local f,l=0x01,0x10 local n={{},{},{}}local d=-0x01 local e=0x01 local a=r while true do n[0x03][o.tHvIphSd(t,e,(function()e=f+e return e-0x01 end)())]=(function()d=d+0x01 return d end)()if d==(0x0f)then d=""l=0x000 break end end local d=#t while e<d+0x01 do n[0x02][l]=o.tHvIphSd(t,e,(function()e=f+e return e-0x01 end)())l=l+0x01 if l%0x02==0x00 then l=0x00 o.mFhmtqez(n[0x01],(c((((n[0x03][n[0x02][0x00]]or 0x00)*0x10)+(n[0x03][n[0x02][0x01]]or 0x00)+a)%0x100)));a=r+a;end end return o.j_lyzsq_(n[0x01])end);t(r(248,"J?ze83FXm;U,lkD{pk"));t(r(176,"iCTwd:e0Pv 7J_a-:8 eew7dxTdvvaa0_dPda:T_PXJ !:d7v:IedCv-_0adw:-uwwPC_JTJP07---:d TaJw_PevCa: U-TwvPaadT 0P J-T0+70-d:edBve:w d-TwvPa_0J:0_JCTdew7P?_dP70aPdvPT_0w0Th0dT_0C_dCP&:7Jxd::7Ps^dP0TJTw:00JwTw:Ted7J0w7:Cd:_ :/ddC daCwTPJ_:CveP7vCee 7a-Lweddv0wev:awddP-aT-we0JC-wdJ7v-Twe7)vdad 0aCwvvda0Tw:eJTCPdPJva -TdCJvTd PaCwd0:7CTw:Ted7P0d7-Cwed7T-vdav0aCCPeP_Pw PdJ7CeL,::Cd:C T-Jd:we-:wav._CTw07 CCvee70, : v:5Cadwe-:wavL_CTw077d-_::7JadedPCa:adw:-=dTPv_awd:0_CCdeP7:a_ePvvvdae wa:wJP:_wwd:v7 C7:- 0-0ewPwvOadv_aCddPP0:Te0JJ-C-0Tvv-K:_7P_ :T wJT_:"));local e=(-171+(function()local t,e=0,1;(function(n,l,e)e(e(l,l and l,e),n(e,l,n),n(e,e and n,e and n))end)(function(d,n,l)if t>385 then return d end t=t+1 e=(e+45)%46071 if(e%618)>309 then e=(e-701)%23797 return n else return l(d(n,l,l),n(n and l,n,d),n(d,n,n))end return l(l(l,l and n,d),n(n,d,l),n(l,n,d))end,function(l,n,d)if t>455 then return n end t=t+1 e=(e*727)%23366 if(e%212)>106 then e=(e-122)%17146 return l else return l(n(l,d,l),n(n,n,n),n(l,n,l and d))end return n(n(l,d,d),d(n and l,n,l),n(d,n and d,l))end,function(d,l,n)if t>298 then return n end t=t+1 e=(e*227)%23305 if(e%904)>=452 then e=(e+270)%37451 return l else return n(l(n,d,n and n),l(n,n,n)and l(d,d and n,n),l(d,n and n,d and d))end return d(n(l,n,l),l(d,n and l,l),d(n,l,d))end)return e;end)())local y=(getfenv)or(function()return _ENV end);local c=o.TMUlDtAU or o.AifgjjUq;local d=2;local t=3;local a=4;local p=1;local function m(z,...)local f=r(e,"VQUjh 2M!zw&=Y80!h0wMM0hMhj02&8!2 hwYj W=zhz!Y00M=j=w!j&20U whU=zYUMzQUQz=Z&z Cj!=)!!&0zM0BUjz8&Mh80U80j w8w 2Y! &Yj  =8hU!YjU&zhz& jM&wjU&hUYwQ8=w=Q=zwUh YQj!Ya2!2QUh&(2MM0=M8&= ===h = h&=3U28U 2MU0z2z822jj0=0UzYQj2= Q2wj7&w8O2&jjUj=&wjj&-UYQQ!!QQ!2wQU z!Q zUM&0&2w8wM20h208j2 Y&0hM 8&2!8 ww jY_hzzYj!=hYi2j=Mhh=Q!&UwwMUj! Qh!0d!MzQMzUg2!!08!MYzMM802=8wM;=fMa8Y2!M2QM2Y8w2Mj!=zhM=80!&&j&&&jQ2zjYwhjj YUwwzUjw Qj!8Q=!wd2j0Qj!UKwM&&F w0zM20U h8j 8z!h&w 802=8z228j20YY wYM hY!h8=&h!=2hU&0j==&h0&jjkwYjRwMUhwQjAz8Q!z QUzQc=!zf2wzm8MY0wMM0wMQ802&802 822YY= zY2 zY{h8=wh&YUhQ&8j&&0j &jU0w=j2w2Ujw5Q8zwQMzhUjwQ9&!!O !200M=0z!!0jM-882w8w2h8Q 80&M Y  j=0hY=zh&=j U=Yjw&wjh&UU8w&U!w jhz0QYzzQzzjQ7!Y1w!=rh!Q08M&0!MM0U20802z822j8Q YY& MYh j=8h&=!h2=Uj0&=");local n=0;o.w_OTRLMF(function()o.wcFbhHyJ()n=n+1 end)local function e(l,e)if e then return n end;n=l+n;end local l,n,u=h(0,h,e,f,o.el_RRQGL);local function r()local n,l=o.el_RRQGL(f,e(1,3),e(5,6)+2);e(2);return(l*256)+n;end;local j=true;local j=0 local function _()local d=n();local e=n();local t=1;local d=(l(e,1,20)*(2^32))+d;local n=l(e,21,31);local e=((-1)^l(e,32));if(n==0)then if(d==j)then return e*0;else n=1;t=0;end;elseif(n==2047)then return(d==0)and(e*(1/0))or(e*(0/0));end;return o.hBBeWScB(e,n-1023)*(t+(d/(2^52)));end;local k=n;local function b(n)local l;if(not n)then n=k();if(n==0)then return'';end;end;l=o.tHvIphSd(f,e(1,3),e(5,6)+n-1);e(n)local e=""for n=(1+j),#l do e=e..o.tHvIphSd(l,n,n)end return e;end;local j=#o.aHHhztkf(s('\49.\48'))~=1 local e=n;local function ee(...)return{...},o.IZk_WWsC('#',...)end local function g()local c={};local e={};local h={};local s={h,c,nil,e};local e=n()local f={}for d=1,e do local l=u();local e;if(l==0)then e=(u()~=#{});elseif(l==2)then local n=_();if j and o.mXwXiRWg(o.aHHhztkf(n),'.(\48+)$')then n=o.IPmxJrsB(n);end e=n;elseif(l==3)then e=b();end;f[d]=e;end;for e=1,n()do c[e-(#{1})]=g();end;s[3]=u();for s=1,n()do local e=u();if(l(e,1,1)==0)then local o=l(e,2,3);local c=l(e,4,6);local e={r(),r(),nil,nil};if(o==0)then e[t]=r();e[a]=r();elseif(o==#{1})then e[t]=n();elseif(o==z[2])then e[t]=n()-(2^16)elseif(o==z[3])then e[t]=n()-(2^16)e[a]=r();end;if(l(c,1,1)==1)then e[d]=f[e[d]]end if(l(c,2,2)==1)then e[t]=f[e[t]]end if(l(c,3,3)==1)then e[a]=f[e[a]]end h[s]=e;end end;return s;end;local function m(l,n,e)local d=n;local d=e;return s(o.mXwXiRWg(o.mXwXiRWg(({o.w_OTRLMF(l)})[2],n),e))end local function ne(k,e,u)local function y(...)local f,y,s,m,j,l,r,b,z,_,g,n;local e=0;while-1<e do if e>2 then if e>=5 then if e~=2 then for l=16,83 do if 6>e then n=h(7);break;end;e=-2;break;end;else e=-2;end else if e>=1 then repeat if 3<e then _=o.IZk_WWsC('#',...)-1;g={};break;end;b={};z={...};until true;else b={};z={...};end end else if e>=1 then if-1<e then for n=28,55 do if 2~=e then s=h(6,65,3,31,k);j=ee m=0;break;end;l=-41;r=-1;break;end;else l=-41;r=-1;end else f=h(6,29,1,47,k);y=h(6,98,2,88,k);end end e=e+1;end;for e=0,_ do if(e>=s)then b[e-s]=z[e+1];else n[e]=z[e+1];end;end;local e=_-s+1 local e;local o;local function h(...)while true do end end while true do if l<-40 then l=l+42 end e=f[l];o=e[p];if 12<=o then if 17<o then if 20>=o then if o>=19 then if 16<o then repeat if o>19 then local e=e[d]n[e]=n[e](c(n,e+1,r))break;end;n[e[d]]=u[e[t]];until true;else local e=e[d]n[e]=n[e](c(n,e+1,r))end else u[e[t]]=n[e[d]];end else if o>21 then if 18<o then repeat if o>22 then local e=e[d]n[e]=n[e](c(n,e+1,r))break;end;n[e[d]]=(e[t]~=0);until true;else n[e[d]]=(e[t]~=0);end else l=e[t];end end else if 14>=o then if 12>=o then if(n[e[d]]==e[a])then l=l+1;else l=e[t];end;else if o==13 then do return end;else l=e[t];end end else if 15<o then if o~=14 then for l=26,97 do if 16~=o then n[e[d]]();break;end;n[e[d]]();break;end;else n[e[d]]();end else n[e[d]]=u[e[t]];end end end else if o>=6 then if o<9 then if o>=7 then if 8>o then for o=0,3 do if 1>=o then if 0~=o then u[e[t]]=n[e[d]];l=l+1;e=f[l];else n[e[d]]=(e[t]~=0);l=l+1;e=f[l];end else if-2~=o then for r=11,85 do if 2<o then if(n[e[d]]==e[a])then l=l+1;else l=e[t];end;break;end;n[e[d]]=u[e[t]];l=l+1;e=f[l];break;end;else if(n[e[d]]==e[a])then l=l+1;else l=e[t];end;end end end else n[e[d]]=(e[t]~=0);end else n(e[d],e[t]);end else if 9<o then if o>7 then repeat if o>10 then local l=e[d];local d=n[e[t]];n[l+1]=d;n[l]=d[e[a]];break;end;local l=e[d]local d,e=j(n[l](c(n,l+1,e[t])))r=e+l-1 local e=0;for l=l,r do e=e+1;n[l]=d[e];end;until true;else local l=e[d];local d=n[e[t]];n[l+1]=d;n[l]=d[e[a]];end else local l=e[d];local d=n[e[t]];n[l+1]=d;n[l]=d[e[a]];end end else if 2<o then if 3<o then if 2~=o then repeat if o<5 then do return end;break;end;if(n[e[d]]==e[a])then l=l+1;else l=e[t];end;until true;else if(n[e[d]]==e[a])then l=l+1;else l=e[t];end;end else u[e[t]]=n[e[d]];end else if 1<=o then if 1~=o then local l=e[d]local d,e=j(n[l](c(n,l+1,e[t])))r=e+l-1 local e=0;for l=l,r do e=e+1;n[l]=d[e];end;else n(e[d],e[t]);end else local o,s,_,z,h;n[e[d]]=u[e[t]];l=l+1;e=f[l];o=e[d];s=n[e[t]];n[o+1]=s;n[o]=s[e[a]];l=l+1;e=f[l];n(e[d],e[t]);l=l+1;e=f[l];o=e[d]_,z=j(n[o](c(n,o+1,e[t])))r=z+o-1 h=0;for e=o,r do h=h+1;n[e]=_[h];end;l=l+1;e=f[l];o=e[d]n[o]=n[o](c(n,o+1,r))l=l+1;e=f[l];n[e[d]]();l=l+1;e=f[l];do return end;end end end end l=1+l;end;end;return y end;local d=0xff;local h={};local a=(1);local t='';(function(n)local l=n local r=0x00 local e=0x00 l={(function(d)if r>0x2f then return d end r=r+1 e=(e+0x85d-d)%0x48 return(e%0x03==0x0 and(function(l)if not n[l]then e=e+0x01 n[l]=(0xea);end return true end)'QSfYa'and l[0x2](0x24a+d))or(e%0x03==0x1 and(function(l)if not n[l]then e=e+0x01 n[l]=(0xe8);end return true end)'yHGRs'and l[0x3](d+0x35d))or(e%0x03==0x2 and(function(l)if not n[l]then e=e+0x01 n[l]=(0xe7);end return true end)'TuVvQ'and l[0x1](d+0x2ad))or d end),(function(o)if r>0x24 then return o end r=r+1 e=(e+0xc1d-o)%0x47 return(e%0x03==0x0 and(function(l)if not n[l]then e=e+0x01 n[l]=(0xbd);end return true end)'tSKbu'and l[0x2](0x26c+o))or(e%0x03==0x1 and(function(l)if not n[l]then e=e+0x01 n[l]=(0xbc);t='\37';d={function()d()end};t=t..'\100\43';end return true end)'LyOhd'and l[0x3](o+0x263))or(e%0x03==0x2 and(function(l)if not n[l]then e=e+0x01 n[l]=(0xd8);h[a]=y();a=a+d;end return true end)'WVSUB'and l[0x1](o+0x1d9))or o end),(function(f)if r>0x30 then return f end r=r+1 e=(e+0x94a-f)%0x32 return(e%0x03==0x1 and(function(l)if not n[l]then e=e+0x01 n[l]=(0xa5);d[2]=(d[2]*(m(function()h()end,c(t))-m(d[1],c(t))))+1;h[a]={};d=d[2];a=a+d;end return true end)'SicBU'and l[0x2](0x9e+f))or(e%0x03==0x0 and(function(l)if not n[l]then e=e+0x01 n[l]=(0x2b);t={t..'\58 a',t};h[a]=g();a=a+((not o.jUKEfQ_G)and 1 or 0);t[1]='\58'..t[1];d[2]=0xff;end return true end)'queVm'and l[0x3](f+0x376))or(e%0x03==0x2 and(function(l)if not n[l]then e=e+0x01 n[l]=(0x76);end return true end)'J_IUi'and l[0x1](f+0x20d))or f end)}l[0x2](0x1534)end){};local e=ne(c(h));return e(...);end return m((function()local n={}local e=0x01;local l;if o.jUKEfQ_G then l=o.jUKEfQ_G(m)else l=''end if o.mXwXiRWg(l,o.jhLBpgTf)then e=e+0;else e=e+1;end n[e]=0x02;n[n[e]+0x01]=0x03;return n;end)(),...)end)((function(e,n,l,t,d,o)local o;if e>3 then if 5>=e then if 0<=e then for o=17,86 do if e~=5 then local e=t;local o,t,r=d(2);do return function()local n,l,d,a=n(l,e(e,e),e(e,e)+3);e(4);return(a*o)+(d*t)+(l*r)+n;end;end;break;end;local e=t;do return function()local n=n(l,e(e,e),e(e,e));e(1);return n;end;end;break;end;else local e=t;local o,t,d=d(2);do return function()local r,a,l,n=n(l,e(e,e),e(e,e)+3);e(4);return(n*o)+(l*t)+(a*d)+r;end;end;end else if e<7 then do return d[l]end;else if e==8 then do return l(e,nil,l);end else do return setmetatable({},{['__\99\97\108\108']=function(e,l,d,t,n)if n then return e[n]elseif t then return e else e[l]=d end end})end end end end else if e<=1 then if e>-3 then for o=24,70 do if 0<e then do return function(n,e,l)if l then local e=(n/2^(e-1))%2^((l-1)-(e-1)+1);return e-e%1;else local e=2^(e-1);return(n%(e+e)>=e)and 1 or 0;end;end;end;break;end;do return n(1),n(4,d,t,l,n),n(5,d,t,l)end;break;end;else do return function(l,e,n)if n then local e=(l/2^(e-1))%2^((n-1)-(e-1)+1);return e-e%1;else local e=2^(e-1);return(l%(e+e)>=e)and 1 or 0;end;end;end;end else if 1~=e then for o=19,95 do if 2~=e then do return n(1),n(4,d,t,l,n),n(5,d,t,l)end;break;end;do return 16777216,65536,256 end;break;end;else do return 16777216,65536,256 end;end end end end),...)
+-- Serviços
+local Players = game:GetService("Players")
+local UIS = game:GetService("UserInputService")
+local RunService = game:GetService("RunService")
+local Debris = game:GetService("Debris")
+local player = Players.LocalPlayer
+
+-- GUI Principal
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "CustomGUI"
+screenGui.ResetOnSpawn = false
+screenGui.Parent = player:WaitForChild("PlayerGui")
+
+-- Função de notificação
+local function showNotification(text)
+	local note = Instance.new("TextLabel")
+	note.Size = UDim2.new(0, 200, 0, 35)
+	note.Position = UDim2.new(1, -210, 1, -60)
+	note.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	note.BackgroundTransparency = 0.3
+	note.Text = text
+	note.TextColor3 = Color3.new(1, 1, 1)
+	note.TextScaled = true
+	note.Font = Enum.Font.GothamBold
+	note.Parent = screenGui
+
+	local corner = Instance.new("UICorner")
+	corner.CornerRadius = UDim.new(0, 8)
+	corner.Parent = note
+
+	Debris:AddItem(note, 2)
+end
+
+-- Função de arrastar UI
+local function enableDrag(frame)
+	local dragging, dragInput, startPos, startInputPos
+
+	local function update(input)
+		local delta = input.Position - startInputPos
+		frame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
+								   startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	end
+
+	frame.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			startInputPos = input.Position
+			startPos = frame.Position
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+
+	frame.InputChanged:Connect(function(input)
+		if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+			update(input)
+		end
+	end)
+end
+
+-- Painel principal
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 180, 0, 210)
+frame.Position = UDim2.new(0, 20, 0.5, -105)
+frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+frame.BorderSizePixel = 0
+frame.Visible = false
+frame.Active = true
+frame.Parent = screenGui
+
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(0, 10)
+corner.Parent = frame
+
+-- Botão de toggle
+local toggleButton = Instance.new("TextButton")
+toggleButton.Size = UDim2.new(0, 40, 0, 40)
+toggleButton.Position = UDim2.new(0, 10, 0, 10)
+toggleButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+toggleButton.Text = "≡"
+toggleButton.TextColor3 = Color3.fromRGB(255, 0, 0)
+toggleButton.Font = Enum.Font.GothamBold
+toggleButton.TextSize = 24
+toggleButton.Active = true
+toggleButton.Parent = screenGui
+
+local iconCorner = Instance.new("UICorner")
+iconCorner.CornerRadius = UDim.new(1, 0)
+iconCorner.Parent = toggleButton
+
+enableDrag(toggleButton)
+
+toggleButton.MouseButton1Click:Connect(function()
+	frame.Visible = not frame.Visible
+end)
+
+-- Créditos
+local creditLabel = Instance.new("TextLabel")
+creditLabel.Size = UDim2.new(1, 0, 0, 20)
+creditLabel.Position = UDim2.new(0, 0, 1, -20)
+creditLabel.BackgroundTransparency = 1
+creditLabel.Text = "Créditos: watchninja"
+creditLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+creditLabel.Font = Enum.Font.Gotham
+creditLabel.TextSize = 14
+creditLabel.TextXAlignment = Enum.TextXAlignment.Center
+creditLabel.Parent = frame
+
+-- Função para criar botões
+local function criarBotao(pai, texto, posY, callback)
+	local btn = Instance.new("TextButton")
+	btn.Size = UDim2.new(1, -20, 0, 30)
+	btn.Position = UDim2.new(0, 10, 0, posY)
+	btn.Text = texto
+	btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	btn.TextColor3 = Color3.fromRGB(255, 0, 0)
+	btn.Font = Enum.Font.GothamBold
+	btn.TextSize = 16
+	btn.Parent = pai
+
+	local btnCorner = Instance.new("UICorner")
+	btnCorner.CornerRadius = UDim.new(0, 6)
+	btnCorner.Parent = btn
+
+	btn.MouseButton1Click:Connect(callback)
+end
+
+-- Funções de movimentação
+local altura = 150
+local plataformaAerea
+local humanoid
+local speedEnabled = false
+local speedValue = 45
+local voando = false
+
+local function getRootPart()
+	return player.Character and player.Character:FindFirstChild("HumanoidRootPart") or nil
+end
+
+local function atualizarVelocidade()
+	if humanoid then
+		humanoid.WalkSpeed = speedEnabled and speedValue or 16
+	end
+end
+
+local function onCharacterAdded(character)
+	humanoid = character:WaitForChild("Humanoid")
+	atualizarVelocidade()
+
+	humanoid:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
+		atualizarVelocidade()
+	end)
+end
+
+player.CharacterAdded:Connect(onCharacterAdded)
+if player.Character then
+	onCharacterAdded(player.Character)
+else
+	player.CharacterAdded:Wait()
+end
+
+-- Botões do painel principal
+criarBotao(frame, "⚡ Velocidade", 20, function()
+	speedEnabled = not speedEnabled
+	atualizarVelocidade()
+	showNotification(speedEnabled and "Velocidade ativada!" or "Velocidade desativada!")
+end)
+
+-- Botão SUBIR
+local frameSubir = Instance.new("TextButton")
+frameSubir.Size = UDim2.new(0, 90, 0, 30)
+frameSubir.Position = UDim2.new(1, -200, 1, -100)
+frameSubir.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+frameSubir.Text = "↑ Subir"
+frameSubir.TextColor3 = Color3.fromRGB(255, 0, 0)
+frameSubir.Font = Enum.Font.GothamBold
+frameSubir.TextSize = 16
+frameSubir.Parent = screenGui
+
+Instance.new("UICorner", frameSubir).CornerRadius = UDim.new(0, 6)
+enableDrag(frameSubir)
+
+frameSubir.MouseButton1Click:Connect(function()
+	local rootPart = getRootPart()
+	if rootPart then
+		local destino = rootPart.Position + Vector3.new(0, altura, 0)
+		local result = workspace:Raycast(rootPart.Position, Vector3.new(0, altura, 0), RaycastParams.new())
+		if result then
+			showNotification("Algo está acima!")
+		end
+		if plataformaAerea then plataformaAerea:Destroy() end
+
+		plataformaAerea = Instance.new("Part")
+		plataformaAerea.Size = Vector3.new(20, 4, 20)
+		plataformaAerea.Position = destino - Vector3.new(0, 2, 0)
+		plataformaAerea.Anchored = true
+		plataformaAerea.Transparency = 1
+		plataformaAerea.CanCollide = true
+		plataformaAerea.Name = "PlataformaAerea"
+		plataformaAerea.Parent = workspace
+
+		rootPart.CFrame = CFrame.new(destino, destino + rootPart.CFrame.LookVector)
+		showNotification("Teleportado para cima!")
+	end
+end)
+
+-- Botão DESCER
+local frameDescer = Instance.new("TextButton")
+frameDescer.Size = UDim2.new(0, 90, 0, 30)
+frameDescer.Position = UDim2.new(1, -100, 1, -100)
+frameDescer.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+frameDescer.Text = "↓ Descer"
+frameDescer.TextColor3 = Color3.fromRGB(255, 0, 0)
+frameDescer.Font = Enum.Font.GothamBold
+frameDescer.TextSize = 16
+frameDescer.Parent = screenGui
+
+Instance.new("UICorner", frameDescer).CornerRadius = UDim.new(0, 6)
+enableDrag(frameDescer)
+
+frameDescer.MouseButton1Click:Connect(function()
+	local rootPart = getRootPart()
+	if rootPart then
+		rootPart.CFrame = rootPart.CFrame - Vector3.new(0, altura, 0)
+		if plataformaAerea then plataformaAerea:Destroy() plataformaAerea = nil end
+		showNotification("Você desceu!")
+	end
+end)
+
+-- BOTÃO: ➡️ Sair da Base (com BodyVelocity reduzida)
+local sairBaseBtn = Instance.new("TextButton")
+sairBaseBtn.Size = UDim2.new(0, 160, 0, 30)
+sairBaseBtn.Position = UDim2.new(1, -300, 1, -220)
+sairBaseBtn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+sairBaseBtn.Text = "➡️ Sair da Base"
+sairBaseBtn.TextColor3 = Color3.fromRGB(0, 255, 0)
+sairBaseBtn.Font = Enum.Font.GothamBold
+sairBaseBtn.TextSize = 14
+sairBaseBtn.Parent = screenGui
+
+Instance.new("UICorner", sairBaseBtn).CornerRadius = UDim.new(0, 6)
+enableDrag(sairBaseBtn)
+
+sairBaseBtn.MouseButton1Click:Connect(function()
+	local rootPart = getRootPart()
+	if not rootPart then return end
+
+	voando = true
+	local duration = 3
+	local speed = 40 -- Reduzido para estabilidade
+
+	if rootPart:FindFirstChild("FlightVelocity") then
+		rootPart.FlightVelocity:Destroy()
+	end
+
+	local bodyVelocity = Instance.new("BodyVelocity")
+	bodyVelocity.Name = "FlightVelocity"
+	bodyVelocity.Velocity = (rootPart.CFrame.RightVector + Vector3.new(0, 0.2, 0)).Unit * speed
+	bodyVelocity.MaxForce = Vector3.new(1, 1, 1) * 1e5
+	bodyVelocity.Parent = rootPart
+
+	showNotification("Voando para a direita...")
+
+	task.delay(duration, function()
+		if bodyVelocity and bodyVelocity.Parent then
+			bodyVelocity:Destroy()
+			showNotification("Você saiu da base!")
+			voando = false
+		end
+	end)
+end)
+
+-- BOTÃO: 🛑 Parar Voo
+local pararVooBtn = Instance.new("TextButton")
+pararVooBtn.Size = UDim2.new(0, 160, 0, 30)
+pararVooBtn.Position = UDim2.new(1, -300, 1, -180)
+pararVooBtn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+pararVooBtn.Text = "🛑 Parar Voo"
+pararVooBtn.TextColor3 = Color3.fromRGB(255, 50, 50)
+pararVooBtn.Font = Enum.Font.GothamBold
+pararVooBtn.TextSize = 14
+pararVooBtn.Parent = screenGui
+
+Instance.new("UICorner", pararVooBtn).CornerRadius = UDim.new(0, 6)
+enableDrag(pararVooBtn)
+
+pararVooBtn.MouseButton1Click:Connect(function()
+	if voando then
+		voando = false
+		local rootPart = getRootPart()
+		if rootPart and rootPart:FindFirstChild("FlightVelocity") then
+			rootPart.FlightVelocity:Destroy()
+			showNotification("Voo cancelado!")
+		end
+	end
+end)
+
+-- === ESP Lock Time Automática ===
+local lteInstances = {}
+local plotName = nil
+
+local function updatelock()
+	for _, plot in pairs(workspace.Plots:GetChildren()) do
+		local billboardName = "LockTimeESP_" .. plot.Name
+		local timeLabel = plot:FindFirstChild("Purchases", true)
+			and plot.Purchases:FindFirstChild("PlotBlock", true)
+			and plot.Purchases.PlotBlock.Main:FindFirstChild("BillboardGui", true)
+			and plot.Purchases.PlotBlock.Main.BillboardGui:FindFirstChild("RemainingTime", true)
+
+		if timeLabel and timeLabel:IsA("TextLabel") then
+			local existing = lteInstances[plot.Name]
+			local isUnlocked = timeLabel.Text == "0s"
+			local displayText = isUnlocked and "Unlocked" or ("Lock: " .. timeLabel.Text)
+
+			local color = Color3.fromRGB(255, 255, 0)
+			if plot.Name == plotName then
+				color = Color3.fromRGB(0, 255, 0)
+			elseif isUnlocked then
+				color = Color3.fromRGB(255, 0, 0)
+			end
+
+			if not existing then
+				local gui = Instance.new("BillboardGui")
+				gui.Name = billboardName
+				gui.Size = UDim2.new(0, 120, 0, 25)
+				gui.StudsOffset = Vector3.new(0, 4, 0)
+				gui.AlwaysOnTop = true
+				gui.Adornee = plot.Purchases.PlotBlock.Main
+				gui.Parent = plot
+
+				local label = Instance.new("TextLabel")
+				label.Size = UDim2.new(1, 0, 1, 0)
+				label.BackgroundTransparency = 1
+				label.TextScaled = true
+				label.TextColor3 = color
+				label.TextStrokeTransparency = 0
+				label.TextStrokeColor3 = Color3.new(0, 0, 0)
+				label.Font = Enum.Font.SourceSansBold
+				label.Text = displayText
+				label.Parent = gui
+
+				lteInstances[plot.Name] = gui
+			else
+				local label = existing:FindFirstChildOfClass("TextLabel")
+				if label then
+					label.Text = displayText
+					label.TextColor3 = color
+				end
+			end
+		else
+			if lteInstances[plot.Name] then
+				lteInstances[plot.Name]:Destroy()
+				lteInstances[plot.Name] = nil
+			end
+		end
+	end
+end
+
+RunService.Heartbeat:Connect(function(dt)
+	accumulatedTime = (accumulatedTime or 0) + dt
+	if accumulatedTime >= 1 then
+		accumulatedTime = 0
+		updatelock()
+	end
+end)
