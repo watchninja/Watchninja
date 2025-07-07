@@ -1,6 +1,5 @@
 -- Serviços
 local Players = game:GetService("Players")
-local UIS = game:GetService("UserInputService")
 local RunService = game:GetService("RunService")
 local Debris = game:GetService("Debris")
 local player = Players.LocalPlayer
@@ -121,7 +120,7 @@ local altura = 150
 local plataformaAerea
 local humanoid
 local speedEnabled = false
-local speedValue = 45
+local speedValue = 40  -- velocidade alterada para 40
 local voando = false
 
 local function getRootPart()
@@ -250,6 +249,79 @@ pararVooBtn.MouseButton1Click:Connect(function()
 	end
 end)
 
+-- ESP LockTime Variables e função
+local plotName
+for _, plot in ipairs(workspace.Plots:GetChildren()) do
+	if plot:FindFirstChild("YourBase", true) and plot:FindFirstChild("YourBase", true).Enabled then
+		plotName = plot.Name
+		break
+	end
+end
+
+local lteInstances = {}
+
+local function atualizarLockESP()
+	for _, plot in pairs(workspace.Plots:GetChildren()) do
+		local timeLabel = plot:FindFirstChild("Purchases", true) and 
+		plot.Purchases:FindFirstChild("PlotBlock", true) and
+		plot.Purchases.PlotBlock.Main:FindFirstChild("BillboardGui", true) and
+		plot.Purchases.PlotBlock.Main.BillboardGui:FindFirstChild("RemainingTime", true)
+		
+		if timeLabel and timeLabel:IsA("TextLabel") then
+			local espName = "LockTimeESP_" .. plot.Name
+			local existingBillboard = plot:FindFirstChild(espName)
+			
+			local isUnlocked = timeLabel.Text == "0s"
+			local displayText = isUnlocked and "Unlocked" or ("Lock: " .. timeLabel.Text)
+			
+			local textColor
+			if plot.Name == plotName then
+				textColor = isUnlocked and Color3.fromRGB(0, 255, 0)
+							or Color3.fromRGB(0, 255, 0)
+			else
+				textColor = isUnlocked and Color3.fromRGB(220, 20, 60)
+							or Color3.fromRGB(255, 255, 0)
+			end
+			
+			if not existingBillboard then
+				local billboard = Instance.new("BillboardGui")
+				billboard.Name = espName
+				billboard.Size = UDim2.new(0, 200, 0, 30)
+				billboard.StudsOffset = Vector3.new(0, 5, 0)
+				billboard.AlwaysOnTop = true
+				billboard.Adornee = plot.Purchases.PlotBlock.Main
+				
+				local label = Instance.new("TextLabel")
+				label.Text = displayText
+				label.Size = UDim2.new(1, 0, 1, 0)
+				label.BackgroundTransparency = 1
+				label.TextScaled = true
+				label.TextColor3 = textColor
+				label.TextStrokeColor3 = Color3.new(0, 0, 0)
+				label.TextStrokeTransparency = 0
+				label.Font = Enum.Font.SourceSansBold
+				label.Parent = billboard
+				
+				billboard.Parent = plot
+				lteInstances[plot.Name] = billboard
+			else
+				existingBillboard.TextLabel.Text = displayText
+				existingBillboard.TextLabel.TextColor3 = textColor
+			end
+		end
+	end
+end
+
+-- Função para ativar o ESP LockTime automaticamente
+local function ativarESPLock()
+	task.spawn(function()
+		while acessoLiberado do
+			atualizarLockESP()
+			task.wait(0.25)
+		end
+	end)
+end
+
 -- 🔑 Tela de chave
 local keyFrame = Instance.new("Frame")
 keyFrame.Size = UDim2.new(0, 300, 0, 150)
@@ -297,6 +369,7 @@ Instance.new("UICorner", verificarBtn).CornerRadius = UDim.new(0, 6)
 verificarBtn.MouseButton1Click:Connect(function()
 	if input.Text == chaveCorreta then
 		keyFrame:Destroy()
+		acessoLiberado = true
 		frame.Visible = true
 		toggleButton.Visible = true
 		frameSubir.Visible = true
@@ -304,6 +377,7 @@ verificarBtn.MouseButton1Click:Connect(function()
 		sairBaseBtn.Visible = true
 		pararVooBtn.Visible = true
 		showNotification("✅ Acesso Liberado!")
+		ativarESPLock() -- ativar ESP LockTime automaticamente
 	else
 		showNotification("❌ Chave incorreta.")
 	end
