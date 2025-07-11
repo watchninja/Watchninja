@@ -59,7 +59,7 @@ local function enableDrag(frame)
 	end)
 end
 
--- Painel principal (só após Key)
+-- Painel principal
 local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0, 180, 0, 210)
 frame.Position = UDim2.new(0, 20, 0.5, -105)
@@ -100,27 +100,12 @@ creditLabel.TextSize = 14
 creditLabel.TextXAlignment = Enum.TextXAlignment.Center
 creditLabel.Parent = frame
 
--- Botões no painel
-local function criarBotao(pai, texto, posY, callback)
-	local btn = Instance.new("TextButton")
-	btn.Size = UDim2.new(1, -20, 0, 30)
-	btn.Position = UDim2.new(0, 10, 0, posY)
-	btn.Text = texto
-	btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	btn.TextColor3 = Color3.fromRGB(255, 0, 0)
-	btn.Font = Enum.Font.GothamBold
-	btn.TextSize = 16
-	btn.Parent = pai
-	Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 6)
-	btn.MouseButton1Click:Connect(callback)
-end
-
 -- Variáveis
 local altura = 150
 local plataformaAerea
 local humanoid
 local speedEnabled = false
-local speedValue = 40  -- velocidade alterada para 40
+local speedValue = 40
 local voando = false
 
 local function getRootPart()
@@ -142,75 +127,45 @@ end
 player.CharacterAdded:Connect(onCharacterAdded)
 if player.Character then onCharacterAdded(player.Character) end
 
+-- Botão de velocidade
+local function criarBotao(pai, texto, posY, callback)
+	local btn = Instance.new("TextButton")
+	btn.Size = UDim2.new(1, -20, 0, 30)
+	btn.Position = UDim2.new(0, 10, 0, posY)
+	btn.Text = texto
+	btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	btn.TextColor3 = Color3.fromRGB(255, 0, 0)
+	btn.Font = Enum.Font.GothamBold
+	btn.TextSize = 16
+	btn.Parent = pai
+	Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 6)
+	btn.MouseButton1Click:Connect(callback)
+end
+
 criarBotao(frame, "⚡ Velocidade", 20, function()
 	speedEnabled = not speedEnabled
 	atualizarVelocidade()
 	showNotification(speedEnabled and "Velocidade ativada!" or "Velocidade desativada!")
 end)
 
--- Botões fora do painel
-local frameSubir = Instance.new("TextButton")
-frameSubir.Size = UDim2.new(0, 90, 0, 30)
-frameSubir.Position = UDim2.new(1, -200, 1, -100)
-frameSubir.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-frameSubir.Text = "↑ Subir"
-frameSubir.TextColor3 = Color3.fromRGB(255, 0, 0)
-frameSubir.Font = Enum.Font.GothamBold
-frameSubir.TextSize = 16
-frameSubir.Visible = false
-frameSubir.Parent = screenGui
-Instance.new("UICorner", frameSubir).CornerRadius = UDim.new(0, 6)
-enableDrag(frameSubir)
+-- Botão UNIFICADO: "Sair e Subir"
+local sairESubirBtn = Instance.new("TextButton")
+sairESubirBtn.Size = UDim2.new(0, 160, 0, 30)
+sairESubirBtn.Position = UDim2.new(1, -300, 1, -220)
+sairESubirBtn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+sairESubirBtn.Text = "🚀 Sair e Subir"
+sairESubirBtn.TextColor3 = Color3.fromRGB(0, 255, 255)
+sairESubirBtn.Font = Enum.Font.GothamBold
+sairESubirBtn.TextSize = 14
+sairESubirBtn.Visible = false
+sairESubirBtn.Parent = screenGui
+Instance.new("UICorner", sairESubirBtn).CornerRadius = UDim.new(0, 6)
+enableDrag(sairESubirBtn)
 
-frameSubir.MouseButton1Click:Connect(function()
-	local rootPart = getRootPart()
-	if rootPart then
-		local destino = rootPart.Position + Vector3.new(0, altura, 0)
-		local result = workspace:Raycast(rootPart.Position, Vector3.new(0, altura, 0), RaycastParams.new())
-		if result then showNotification("Algo está acima!") end
-		if plataformaAerea then plataformaAerea:Destroy() end
-		plataformaAerea = Instance.new("Part")
-		plataformaAerea.Size = Vector3.new(20, 4, 20)
-		plataformaAerea.Position = destino - Vector3.new(0, 2, 0)
-		plataformaAerea.Anchored = true
-		plataformaAerea.Transparency = 1
-		plataformaAerea.CanCollide = true
-		plataformaAerea.Parent = workspace
-		rootPart.CFrame = CFrame.new(destino, destino + rootPart.CFrame.LookVector)
-		showNotification("Teleportado para cima!")
-	end
-end)
-
-local frameDescer = frameSubir:Clone()
-frameDescer.Text = "↓ Descer"
-frameDescer.Position = UDim2.new(1, -100, 1, -100)
-frameDescer.Visible = false
-frameDescer.Parent = screenGui
-frameDescer.MouseButton1Click:Connect(function()
-	local rootPart = getRootPart()
-	if rootPart then
-		rootPart.CFrame = rootPart.CFrame - Vector3.new(0, altura, 0)
-		if plataformaAerea then plataformaAerea:Destroy() plataformaAerea = nil end
-		showNotification("Você desceu!")
-	end
-end)
-
-local sairBaseBtn = Instance.new("TextButton")
-sairBaseBtn.Size = UDim2.new(0, 160, 0, 30)
-sairBaseBtn.Position = UDim2.new(1, -300, 1, -220)
-sairBaseBtn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-sairBaseBtn.Text = "➡️ Sair da Base"
-sairBaseBtn.TextColor3 = Color3.fromRGB(0, 255, 0)
-sairBaseBtn.Font = Enum.Font.GothamBold
-sairBaseBtn.TextSize = 14
-sairBaseBtn.Visible = false
-sairBaseBtn.Parent = screenGui
-Instance.new("UICorner", sairBaseBtn).CornerRadius = UDim.new(0, 6)
-enableDrag(sairBaseBtn)
-
-sairBaseBtn.MouseButton1Click:Connect(function()
+sairESubirBtn.MouseButton1Click:Connect(function()
 	local rootPart = getRootPart()
 	if not rootPart then return end
+
 	voando = true
 	local duration = 3
 	local speed = 40
@@ -223,106 +178,53 @@ sairBaseBtn.MouseButton1Click:Connect(function()
 	bodyVelocity.MaxForce = Vector3.new(1, 1, 1) * 1e5
 	bodyVelocity.Parent = rootPart
 	showNotification("Voando para a direita...")
+
 	task.delay(duration, function()
 		if bodyVelocity and bodyVelocity.Parent then
 			bodyVelocity:Destroy()
-			showNotification("Você saiu da base!")
 			voando = false
+			showNotification("Você saiu da base!")
+
+			-- Subir
+			local destino = rootPart.Position + Vector3.new(0, altura, 0)
+			if plataformaAerea then plataformaAerea:Destroy() end
+			plataformaAerea = Instance.new("Part")
+			plataformaAerea.Size = Vector3.new(20, 4, 20)
+			plataformaAerea.Position = destino - Vector3.new(0, 2, 0)
+			plataformaAerea.Anchored = true
+			plataformaAerea.Transparency = 1
+			plataformaAerea.CanCollide = true
+			plataformaAerea.Parent = workspace
+			rootPart.CFrame = CFrame.new(destino, destino + rootPart.CFrame.LookVector)
+			showNotification("Teleportado para cima!")
 		end
 	end)
 end)
 
-local pararVooBtn = sairBaseBtn:Clone()
-pararVooBtn.Text = "🛑 Parar Voo"
-pararVooBtn.Position = UDim2.new(1, -300, 1, -180)
-pararVooBtn.TextColor3 = Color3.fromRGB(255, 50, 50)
-pararVooBtn.Visible = false
-pararVooBtn.Parent = screenGui
-pararVooBtn.MouseButton1Click:Connect(function()
-	if voando then
-		voando = false
-		local rootPart = getRootPart()
-		if rootPart and rootPart:FindFirstChild("FlightVelocity") then
-			rootPart.FlightVelocity:Destroy()
-			showNotification("Voo cancelado!")
-		end
+-- Botão de Descer
+local frameDescer = Instance.new("TextButton")
+frameDescer.Size = UDim2.new(0, 90, 0, 30)
+frameDescer.Position = UDim2.new(1, -100, 1, -100)
+frameDescer.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+frameDescer.Text = "↓ Descer"
+frameDescer.TextColor3 = Color3.fromRGB(255, 0, 0)
+frameDescer.Font = Enum.Font.GothamBold
+frameDescer.TextSize = 16
+frameDescer.Visible = false
+frameDescer.Parent = screenGui
+Instance.new("UICorner", frameDescer).CornerRadius = UDim.new(0, 6)
+enableDrag(frameDescer)
+
+frameDescer.MouseButton1Click:Connect(function()
+	local rootPart = getRootPart()
+	if rootPart then
+		rootPart.CFrame = rootPart.CFrame - Vector3.new(0, altura, 0)
+		if plataformaAerea then plataformaAerea:Destroy() plataformaAerea = nil end
+		showNotification("Você desceu!")
 	end
 end)
 
--- ESP LockTime Variables e função
-local plotName
-for _, plot in ipairs(workspace.Plots:GetChildren()) do
-	if plot:FindFirstChild("YourBase", true) and plot:FindFirstChild("YourBase", true).Enabled then
-		plotName = plot.Name
-		break
-	end
-end
-
-local lteInstances = {}
-
-local function atualizarLockESP()
-	for _, plot in pairs(workspace.Plots:GetChildren()) do
-		local timeLabel = plot:FindFirstChild("Purchases", true) and 
-		plot.Purchases:FindFirstChild("PlotBlock", true) and
-		plot.Purchases.PlotBlock.Main:FindFirstChild("BillboardGui", true) and
-		plot.Purchases.PlotBlock.Main.BillboardGui:FindFirstChild("RemainingTime", true)
-		
-		if timeLabel and timeLabel:IsA("TextLabel") then
-			local espName = "LockTimeESP_" .. plot.Name
-			local existingBillboard = plot:FindFirstChild(espName)
-			
-			local isUnlocked = timeLabel.Text == "0s"
-			local displayText = isUnlocked and "Unlocked" or ("Lock: " .. timeLabel.Text)
-			
-			local textColor
-			if plot.Name == plotName then
-				textColor = isUnlocked and Color3.fromRGB(0, 255, 0)
-							or Color3.fromRGB(0, 255, 0)
-			else
-				textColor = isUnlocked and Color3.fromRGB(220, 20, 60)
-							or Color3.fromRGB(255, 255, 0)
-			end
-			
-			if not existingBillboard then
-				local billboard = Instance.new("BillboardGui")
-				billboard.Name = espName
-				billboard.Size = UDim2.new(0, 200, 0, 30)
-				billboard.StudsOffset = Vector3.new(0, 5, 0)
-				billboard.AlwaysOnTop = true
-				billboard.Adornee = plot.Purchases.PlotBlock.Main
-				
-				local label = Instance.new("TextLabel")
-				label.Text = displayText
-				label.Size = UDim2.new(1, 0, 1, 0)
-				label.BackgroundTransparency = 1
-				label.TextScaled = true
-				label.TextColor3 = textColor
-				label.TextStrokeColor3 = Color3.new(0, 0, 0)
-				label.TextStrokeTransparency = 0
-				label.Font = Enum.Font.SourceSansBold
-				label.Parent = billboard
-				
-				billboard.Parent = plot
-				lteInstances[plot.Name] = billboard
-			else
-				existingBillboard.TextLabel.Text = displayText
-				existingBillboard.TextLabel.TextColor3 = textColor
-			end
-		end
-	end
-end
-
--- Função para ativar o ESP LockTime automaticamente
-local function ativarESPLock()
-	task.spawn(function()
-		while acessoLiberado do
-			atualizarLockESP()
-			task.wait(0.25)
-		end
-	end)
-end
-
--- 🔑 Tela de chave
+-- Tela de Key
 local keyFrame = Instance.new("Frame")
 keyFrame.Size = UDim2.new(0, 300, 0, 150)
 keyFrame.Position = UDim2.new(0.5, -150, 0.5, -75)
@@ -372,12 +274,9 @@ verificarBtn.MouseButton1Click:Connect(function()
 		acessoLiberado = true
 		frame.Visible = true
 		toggleButton.Visible = true
-		frameSubir.Visible = true
+		sairESubirBtn.Visible = true
 		frameDescer.Visible = true
-		sairBaseBtn.Visible = true
-		pararVooBtn.Visible = true
 		showNotification("✅ Acesso Liberado!")
-		ativarESPLock() -- ativar ESP LockTime automaticamente
 	else
 		showNotification("❌ Chave incorreta.")
 	end
