@@ -2,6 +2,7 @@
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local Debris = game:GetService("Debris")
+local Lighting = game:GetService("Lighting")
 local UIS = game:GetService("UserInputService")
 local player = Players.LocalPlayer
 
@@ -103,12 +104,9 @@ creditLabel.TextXAlignment = Enum.TextXAlignment.Center
 creditLabel.Parent = frame
 
 -- Variáveis
-local altura = 150
-local plataformaAerea
 local humanoid
 local speedEnabled = true
 local speedValue = 40
-local voando = false
 
 local function getRootPart()
 	return player.Character and player.Character:FindFirstChild("HumanoidRootPart") or nil
@@ -121,12 +119,10 @@ local function atualizarVelocidade()
 end
 
 local function ativarGodMode()
-	-- Desativa dano: proteção contra morte
 	local character = player.Character
 	if not character then return end
 	local humanoid = character:FindFirstChildOfClass("Humanoid")
 	if not humanoid then return end
-	-- Usar a propriedade HealthChanged para evitar morrer
 	humanoid.HealthChanged:Connect(function(health)
 		if health < 1 then
 			humanoid.Health = humanoid.MaxHealth
@@ -138,15 +134,11 @@ local function onCharacterAdded(character)
 	humanoid = character:WaitForChild("Humanoid")
 	atualizarVelocidade()
 	humanoid:GetPropertyChangedSignal("WalkSpeed"):Connect(atualizarVelocidade)
-
-	-- Ativa pulo infinito automaticamente
 	UIS.JumpRequest:Connect(function()
 		if humanoid then
 			humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
 		end
 	end)
-
-	-- Ativa God Mode automaticamente junto com pulo infinito
 	ativarGodMode()
 end
 
@@ -193,82 +185,26 @@ criarBotao(frame, "🦘 Pulo Infinito", 100, function()
 	showNotification("Pulo Infinito já está ativo!")
 end)
 
--- Botão “Sair e Subir”
-local sairESubirBtn = Instance.new("TextButton")
-sairESubirBtn.Size = UDim2.new(0, 160, 0, 30)
-sairESubirBtn.Position = UDim2.new(1, -300, 1, -220)
-sairESubirBtn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-sairESubirBtn.Text = "🚀 Sair e Subir"
-sairESubirBtn.TextColor3 = Color3.fromRGB(0, 255, 255)
-sairESubirBtn.Font = Enum.Font.GothamBold
-sairESubirBtn.TextSize = 14
-sairESubirBtn.Visible = true
-sairESubirBtn.Parent = screenGui
-Instance.new("UICorner", sairESubirBtn).CornerRadius = UDim.new(0, 6)
-enableDrag(sairESubirBtn)
+-- Anti-Lag e Delay (Ativado automaticamente)
+local function ativarAntiLag()
+	Lighting.GlobalShadows = false
+	Lighting.FogEnd = 1000000
+	settings().Rendering.QualityLevel = Enum.QualityLevel.Level01
 
-sairESubirBtn.MouseButton1Click:Connect(function()
-	local rootPart = getRootPart()
-	if not rootPart then return end
-
-	voando = true
-	local duration = 3
-	local speed = 40
-
-	if rootPart:FindFirstChild("FlightVelocity") then
-		rootPart.FlightVelocity:Destroy()
-	end
-
-	local bodyVelocity = Instance.new("BodyVelocity")
-	bodyVelocity.Name = "FlightVelocity"
-	bodyVelocity.Velocity = (rootPart.CFrame.RightVector + Vector3.new(0, 0.2, 0)).Unit * speed
-	bodyVelocity.MaxForce = Vector3.new(1, 1, 1) * 1e5
-	bodyVelocity.Parent = rootPart
-	showNotification("Voando para a direita...")
-
-	task.delay(duration, function()
-		if bodyVelocity and bodyVelocity.Parent then
-			bodyVelocity:Destroy()
-			voando = false
-			showNotification("Você saiu da base!")
-
-			local destino = rootPart.Position + Vector3.new(0, altura, 0)
-			if plataformaAerea then plataformaAerea:Destroy() end
-			plataformaAerea = Instance.new("Part")
-			plataformaAerea.Size = Vector3.new(20, 4, 20)
-			plataformaAerea.Position = destino - Vector3.new(0, 2, 0)
-			plataformaAerea.Anchored = true
-			plataformaAerea.Transparency = 1
-			plataformaAerea.CanCollide = true
-			plataformaAerea.Parent = workspace
-			rootPart.CFrame = CFrame.new(destino, destino + rootPart.CFrame.LookVector)
-			showNotification("Teleportado para cima!")
+	for _, obj in pairs(workspace:GetDescendants()) do
+		if obj:IsA("Decal") or obj:IsA("Texture") then
+			obj:Destroy()
+		elseif obj:IsA("ParticleEmitter") or obj:IsA("Trail") then
+			obj.Enabled = false
+		elseif obj:IsA("BasePart") then
+			obj.CastShadow = false
 		end
-	end)
-end)
-
--- Botão Descer
-local frameDescer = Instance.new("TextButton")
-frameDescer.Size = UDim2.new(0, 90, 0, 30)
-frameDescer.Position = UDim2.new(1, -100, 1, -100)
-frameDescer.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-frameDescer.Text = "↓ Descer"
-frameDescer.TextColor3 = Color3.fromRGB(255, 0, 0)
-frameDescer.Font = Enum.Font.GothamBold
-frameDescer.TextSize = 16
-frameDescer.Visible = true
-frameDescer.Parent = screenGui
-Instance.new("UICorner", frameDescer).CornerRadius = UDim.new(0, 6)
-enableDrag(frameDescer)
-
-frameDescer.MouseButton1Click:Connect(function()
-	local rootPart = getRootPart()
-	if rootPart then
-		rootPart.CFrame = rootPart.CFrame - Vector3.new(0, altura, 0)
-		if plataformaAerea then plataformaAerea:Destroy() plataformaAerea = nil end
-		showNotification("Você desceu!")
 	end
-end)
+	showNotification("Anti-Lag ativado automaticamente!")
+end
+
+-- Chamar anti-lag no início
+ativarAntiLag()
 
 -- ESP LockTime atualizado sempre
 RunService.Heartbeat:Connect(function()
