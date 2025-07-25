@@ -4,6 +4,8 @@ local RunService = game:GetService("RunService")
 local Debris = game:GetService("Debris")
 local Lighting = game:GetService("Lighting")
 local UIS = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+
 local player = Players.LocalPlayer
 
 -- GUI Principal
@@ -259,4 +261,188 @@ RunService.Heartbeat:Connect(function()
 			end
 		end
 	end
+end)
+
+-- ==== Código do TP Delivery, corrigido para não sumir após morte ====
+
+local random = Random.new()
+local void = CFrame.new(0, -3.4028234663852886e+38, 0)
+
+local function TP(position)
+	local hrp = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+	if hrp and typeof(position) == "CFrame" then
+		hrp.CFrame = position + Vector3.new(
+			random:NextNumber(-0.0001, 0.0001),
+			random:NextNumber(-0.0001, 0.0001),
+			random:NextNumber(-0.0001, 0.0001)
+		)
+	end
+	RunService.Heartbeat:Wait()
+end
+
+local function FindDelivery()
+	local plots = workspace:FindFirstChild("Plots")
+	if not plots then return nil end
+	for _, plot in pairs(plots:GetChildren()) do
+		local sign = plot:FindFirstChild("PlotSign")
+		if sign then
+			local yourBase = sign:FindFirstChild("YourBase")
+			if yourBase and yourBase.Enabled then
+				local hitbox = plot:FindFirstChild("DeliveryHitbox")
+				if hitbox then return hitbox end
+			end
+		end
+	end
+	return nil
+end
+
+local function AindaComPet()
+	local char = player.Character
+	if not char then return false end
+	for _, obj in pairs(char:GetChildren()) do
+		if obj:IsA("Tool") and obj.Name:lower():find("pet") then
+			return true
+		end
+	end
+	return false
+end
+
+local function ProtegerComForceField()
+	local char = player.Character
+	if char and not char:FindFirstChildOfClass("ForceField") then
+		local ff = Instance.new("ForceField", char)
+		ff.Visible = false
+	end
+end
+
+local function TeleportToDeliveryBox()
+	local hitbox = FindDelivery()
+	if not hitbox then
+		warn("DeliveryHitbox not found")
+		return false, nil
+	end
+
+	local hrp = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+	if not hrp then return false, hitbox end
+
+	local flyTarget = hitbox.Position + Vector3.new(0, 8, 0)
+	local flyDistance = (hrp.Position - flyTarget).Magnitude
+	local flyTime = math.clamp(flyDistance / 40, 1.5, 4)
+
+	local tweenInfo = TweenInfo.new(flyTime, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+	local tween = TweenService:Create(hrp, tweenInfo, { CFrame = CFrame.new(flyTarget) })
+	tween:Play()
+	tween.Completed:Wait()
+
+	task.wait(0.2)
+
+	for i = 1, 3 do
+		TP(hitbox.CFrame * CFrame.new(0, -3, 0))
+	end
+
+	task.wait(0.2)
+
+	local distance = (hrp.Position - hitbox.Position).Magnitude
+	if distance <= 30 then
+		return true, hitbox
+	else
+		return false, hitbox
+	end
+end
+
+-- Função para criar o GUI do botão "ROUBAR PET"
+local function createTPDeliveryGui()
+	-- Remove GUI antiga se existir
+	local oldGui = player.PlayerGui:FindFirstChild("TPDeliveryOnly")
+	if oldGui then
+		oldGui:Destroy()
+	end
+
+	local ScreenGui2 = Instance.new("ScreenGui")
+	ScreenGui2.Name = "TPDeliveryOnly"
+	ScreenGui2.ResetOnSpawn = false
+	ScreenGui2.Parent = player.PlayerGui
+
+	local Button = Instance.new("TextButton", ScreenGui2)
+	Button.Size = UDim2.new(0, 180, 0, 50)
+	Button.Position = UDim2.new(0, 30, 0, 5) -- posição mais pra cima para não sobrepor o painel
+	Button.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	Button.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Button.Font = Enum.Font.GothamBold
+	Button.TextSize = 18
+	Button.Text = "ROUBAR PET"
+
+	local UICorner = Instance.new("UICorner", Button)
+	UICorner.CornerRadius = UDim.new(0, 12)
+
+	local Stroke = Instance.new("UIStroke", Button)
+	Stroke.Color = Color3.fromRGB(0, 80, 200)
+	Stroke.Thickness = 2
+
+	local spamming = false
+	local spamThread
+
+	Button.MouseButton1Click:Connect(function()
+		spamming = not spamming
+		if spamming then
+			Button.Text = "PARAR"
+			spamThread = task.spawn(function()
+				while spamming do
+					local comPet = AindaComPet()
+					local success, hitbox = TeleportToDeliveryBox()
+
+					if comPet or (success and AindaComPet()) then
+						print("Pet detectado na mão. Iniciando entrega...")
+						ProtegerComForceField()
+
+						local start = tick()
+						while AindaComPet() and tick() - start < 3 do
+							local delivery = FindDelivery()
+							if delivery then
+								TP(delivery.CFrame * CFrame.new(0, -3, 0))
+							end
+							task.wait(0.05)
+						end
+
+						if not AindaComPet() then
+							print("Pet entregue com sucesso!")
+							spamming = false
+							Button.Text = "ROUBAR PET"
+							break
+						else
+							print("Entrega falhou. Retentando...")
+						end
+					else
+						print("Tentando pegar pet...")
+					end
+
+					task.wait(0.05)
+				end
+			end)
+		else
+			Button.Text = "ROUBAR PET"
+		end
+	end)
+
+	-- Efeito rainbow do botão
+	spawn(function()
+		local hue = 0
+		while true do
+			hue = (hue + 0.005) % 1
+			local color = Color3.fromHSV(hue, 1, 1)
+			Button.BackgroundColor3 = color
+			task.wait(0.03)
+		end
+	end)
+
+	return ScreenGui2, Button
+end
+
+-- Cria o GUI do botão "ROUBAR PET" na inicialização
+createTPDeliveryGui()
+
+-- Recria o GUI toda vez que o personagem spawna para garantir visibilidade
+player.CharacterAdded:Connect(function()
+	task.wait(1) -- espera PlayerGui estabilizar
+	createTPDeliveryGui()
 end)
