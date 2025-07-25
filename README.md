@@ -327,7 +327,9 @@ local function TeleportToDeliveryBox()
 
 	local flyTarget = hitbox.Position + Vector3.new(0, 8, 0)
 	local flyDistance = (hrp.Position - flyTarget).Magnitude
-	local flyTime = math.clamp(flyDistance / 40, 1.5, 4)
+
+	-- Aqui ajustamos para voo mais devagar (divisor 20 ao invés de 40)
+	local flyTime = math.clamp(flyDistance / 20, 1.5, 4)
 
 	local tweenInfo = TweenInfo.new(flyTime, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
 	local tween = TweenService:Create(hrp, tweenInfo, { CFrame = CFrame.new(flyTarget) })
@@ -336,8 +338,9 @@ local function TeleportToDeliveryBox()
 
 	task.wait(0.2)
 
+	-- Vai um pouco mais para baixo ao chegar
 	for i = 1, 3 do
-		TP(hitbox.CFrame * CFrame.new(0, -3, 0))
+		TP(hitbox.CFrame * CFrame.new(0, -6, 0)) -- ajuste para Y = -6 para descer mais
 	end
 
 	task.wait(0.2)
