@@ -315,137 +315,53 @@ local function ProtegerComForceField()
 	end
 end
 
-local function TeleportToDeliveryBox()
-	local hitbox = FindDelivery()
-	if not hitbox then
-		warn("DeliveryHitbox not found")
-		return false, nil
-	end
+-- >>>>> REMOVIDO BOTÃO "ROUBAR PET" E SEU CÓDIGO <<<
 
-	local hrp = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
-	if not hrp then return false, hitbox end
+-- ADICIONANDO ESP VERMELHO AUTOMÁTICO PARA PETS DA LISTA
 
-	local flyTarget = hitbox.Position + Vector3.new(0, 8, 0)
-	local flyDistance = (hrp.Position - flyTarget).Magnitude
+local petNomesAlvo = {
+	["Garama And Madundung"] = true,
+	["Nuclearo Dinossauro"] = true,
+	["La Grande Combinasion"] = true,
+	["Secret Lucky Block"] = true,
+	["Pot Hotspot"] = true,
+	["Graipuss Medussi"] = true,
+	["Sammyni Spyderini"] = true,
+	["Los Tralaleritos"] = true,
+	["Las Tralaleritas"] = true,
+	["Torrtuginni Dragonfrutini"] = true,
+	["La Vacca Saturno Saturnita"] = true,
+}
 
-	-- Aqui ajustamos para voo mais devagar (divisor 20 ao invés de 40)
-	local flyTime = math.clamp(flyDistance / 20, 1.5, 4)
+local function criarESPparaPet(petModel)
+	if petModel:FindFirstChild("ESPTag") then return end
+	local part = petModel:FindFirstChild("Head") or petModel:FindFirstChildWhichIsA("BasePart")
+	if not part then return end
 
-	local tweenInfo = TweenInfo.new(flyTime, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
-	local tween = TweenService:Create(hrp, tweenInfo, { CFrame = CFrame.new(flyTarget) })
-	tween:Play()
-	tween.Completed:Wait()
+	local espGui = Instance.new("BillboardGui")
+	espGui.Name = "ESPTag"
+	espGui.Adornee = part
+	espGui.AlwaysOnTop = true
+	espGui.Size = UDim2.new(0, 100, 0, 40)
+	espGui.StudsOffset = Vector3.new(0, 2, 0)
+	espGui.Parent = petModel
 
-	task.wait(0.2)
-
-	-- Vai um pouco mais para baixo ao chegar
-	for i = 1, 3 do
-		TP(hitbox.CFrame * CFrame.new(0, -6, 0)) -- ajuste para Y = -6 para descer mais
-	end
-
-	task.wait(0.2)
-
-	local distance = (hrp.Position - hitbox.Position).Magnitude
-	if distance <= 30 then
-		return true, hitbox
-	else
-		return false, hitbox
-	end
+	local label = Instance.new("TextLabel")
+	label.BackgroundTransparency = 1
+	label.Size = UDim2.new(1, 0, 1, 0)
+	label.Text = petModel.Name
+	label.TextColor3 = Color3.fromRGB(255, 0, 0)
+	label.TextStrokeTransparency = 0
+	label.TextStrokeColor3 = Color3.new(0, 0, 0)
+	label.TextScaled = true
+	label.Font = Enum.Font.GothamBold
+	label.Parent = espGui
 end
 
--- Função para criar o GUI do botão "ROUBAR PET"
-local function createTPDeliveryGui()
-	-- Remove GUI antiga se existir
-	local oldGui = player.PlayerGui:FindFirstChild("TPDeliveryOnly")
-	if oldGui then
-		oldGui:Destroy()
+RunService.Heartbeat:Connect(function()
+	for _, pet in pairs(workspace:GetChildren()) do
+		if pet:IsA("Model") and petNomesAlvo[pet.Name] then
+			criarESPparaPet(pet)
+		end
 	end
-
-	local ScreenGui2 = Instance.new("ScreenGui")
-	ScreenGui2.Name = "TPDeliveryOnly"
-	ScreenGui2.ResetOnSpawn = false
-	ScreenGui2.Parent = player.PlayerGui
-
-	local Button = Instance.new("TextButton", ScreenGui2)
-	Button.Size = UDim2.new(0, 180, 0, 50)
-	Button.Position = UDim2.new(0, 30, 0, 5) -- posição mais pra cima para não sobrepor o painel
-	Button.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-	Button.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Button.Font = Enum.Font.GothamBold
-	Button.TextSize = 18
-	Button.Text = "ROUBAR PET"
-
-	local UICorner = Instance.new("UICorner", Button)
-	UICorner.CornerRadius = UDim.new(0, 12)
-
-	local Stroke = Instance.new("UIStroke", Button)
-	Stroke.Color = Color3.fromRGB(0, 80, 200)
-	Stroke.Thickness = 2
-
-	local spamming = false
-	local spamThread
-
-	Button.MouseButton1Click:Connect(function()
-		spamming = not spamming
-		if spamming then
-			Button.Text = "PARAR"
-			spamThread = task.spawn(function()
-				while spamming do
-					local comPet = AindaComPet()
-					local success, hitbox = TeleportToDeliveryBox()
-
-					if comPet or (success and AindaComPet()) then
-						print("Pet detectado na mão. Iniciando entrega...")
-						ProtegerComForceField()
-
-						local start = tick()
-						while AindaComPet() and tick() - start < 3 do
-							local delivery = FindDelivery()
-							if delivery then
-								TP(delivery.CFrame * CFrame.new(0, -3, 0))
-							end
-							task.wait(0.05)
-						end
-
-						if not AindaComPet() then
-							print("Pet entregue com sucesso!")
-							spamming = false
-							Button.Text = "ROUBAR PET"
-							break
-						else
-							print("Entrega falhou. Retentando...")
-						end
-					else
-						print("Tentando pegar pet...")
-					end
-
-					task.wait(0.05)
-				end
-			end)
-		else
-			Button.Text = "ROUBAR PET"
-		end
-	end)
-
-	-- Efeito rainbow do botão
-	spawn(function()
-		local hue = 0
-		while true do
-			hue = (hue + 0.005) % 1
-			local color = Color3.fromHSV(hue, 1, 1)
-			Button.BackgroundColor3 = color
-			task.wait(0.03)
-		end
-	end)
-
-	return ScreenGui2, Button
-end
-
--- Cria o GUI do botão "ROUBAR PET" na inicialização
-createTPDeliveryGui()
-
--- Recria o GUI toda vez que o personagem spawna para garantir visibilidade
-player.CharacterAdded:Connect(function()
-	task.wait(1) -- espera PlayerGui estabilizar
-	createTPDeliveryGui()
 end)
