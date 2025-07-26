@@ -331,6 +331,7 @@ local petNomesAlvo = {
 	["Las Tralaleritas"] = true,
 	["Torrtuginni Dragonfrutini"] = true,
 	["La Vacca Saturno Saturnita"] = true,
+	["Las Vaquitas Saturnitas"] = true, -- pet adicionado aqui
 }
 
 local function criarESPparaPet(petModel)
