@@ -187,7 +187,7 @@ criarBotao(frame, "🦘 Pulo Infinito", 100, function()
 	showNotification("Pulo Infinito já está ativo!")
 end)
 
--- Anti-Lag e Delay (Ativado automaticamente)
+-- Anti-Lag e Delay
 local function ativarAntiLag()
 	Lighting.GlobalShadows = false
 	Lighting.FogEnd = 1000000
@@ -205,7 +205,6 @@ local function ativarAntiLag()
 	showNotification("Anti-Lag ativado automaticamente!")
 end
 
--- Chamar anti-lag no início
 ativarAntiLag()
 
 -- ESP LockTime atualizado sempre
@@ -263,8 +262,7 @@ RunService.Heartbeat:Connect(function()
 	end
 end)
 
--- ==== Código do TP Delivery, corrigido para não sumir após morte ====
-
+-- Código do TP Delivery
 local random = Random.new()
 local void = CFrame.new(0, -3.4028234663852886e+38, 0)
 
@@ -315,10 +313,7 @@ local function ProtegerComForceField()
 	end
 end
 
--- >>>>> REMOVIDO BOTÃO "ROUBAR PET" E SEU CÓDIGO <<<
-
--- ADICIONANDO ESP VERMELHO AUTOMÁTICO PARA PETS DA LISTA
-
+-- Pets com ESP vermelho (atualizado)
 local petNomesAlvo = {
 	["Garama And Madundung"] = true,
 	["Nuclearo Dinossauro"] = true,
@@ -331,7 +326,8 @@ local petNomesAlvo = {
 	["Las Tralaleritas"] = true,
 	["Torrtuginni Dragonfrutini"] = true,
 	["La Vacca Saturno Saturnita"] = true,
-	["Las Vaquitas Saturnitas"] = true, -- pet adicionado aqui
+	["Las Vaquitas Saturnitas"] = true,
+	["Chicleteira Bicicleteira"] = true, -- Pet adicionado aqui
 }
 
 local function criarESPparaPet(petModel)
